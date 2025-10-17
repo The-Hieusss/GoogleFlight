@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { DatePickerDepart, DatePickerReturn } from "./DatePicker";
 import { Input } from "./ui/input";
 import FlightSearch from "./FlightSearch";
-import { theme, inputConfigs, cn } from "@/lib/theme";
+import { theme, inputConfigs, cn } from "../lib/theme";
 
 function SearchBar() {
   const [departure, setDeparture] = useState("");
