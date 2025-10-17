@@ -1,20 +1,21 @@
 import { useState } from "react";
 import TopNavOptions from "./TopNavOption";
 import { Menu, X, Sun, Grid3x3, ChevronDown, User } from "lucide-react";
+import { theme, cn } from "../lib/theme";
 
 function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-200">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={cn("sticky top-0 z-50 w-full", theme.effects.glass, theme.shadow.sm, "border-b border-gray-200")}>
+      <nav className={cn(theme.layout.maxWidth, theme.spacing.container)}>
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Left Section - Logo & Navigation */}
           <div className="flex items-center space-x-4 md:space-x-8">
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className={cn("lg:hidden p-2", theme.radius.sm, "hover:bg-gray-100", theme.transition.colors)}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (

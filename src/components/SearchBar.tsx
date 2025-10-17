@@ -146,7 +146,15 @@ function SearchBar() {
                 {/* Swap Button */}
                 <button
                   onClick={handleSwapLocations}
-                  className="flex-shrink-0 p-3 bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-10"
+                  className={cn(
+                    "flex-shrink-0 p-3 text-white z-10",
+                    theme.colors.primary.gradient,
+                    "hover:from-blue-700 hover:to-indigo-800",
+                    theme.radius.full,
+                    theme.shadow.lg,
+                    "hover:shadow-xl hover:scale-110",
+                    theme.transition.fast
+                  )}
                   aria-label="Swap locations"
                 >
                   <ArrowLeftRight className="w-5 h-5" />
@@ -173,11 +181,29 @@ function SearchBar() {
 
               {/* Date Pickers */}
               <div className="flex justify-center lg:justify-end">
-                <div className="flex flex-col sm:flex-row border-2 border-gray-200 hover:border-indigo-400 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-200 w-full lg:w-auto">
-                  <div className="flex items-center justify-center px-4 py-3 border-b sm:border-b-0 sm:border-r border-gray-200 hover:bg-gray-50 transition-colors">
+                <div className={cn(
+                  "flex flex-col sm:flex-row w-full lg:w-auto",
+                  "border-2 bg-white overflow-hidden",
+                  inputConfigs.departure.borderColor,
+                  "hover:border-indigo-400",
+                  theme.radius.lg,
+                  theme.shadow.sm,
+                  "hover:shadow-md",
+                  theme.transition.fast
+                )}>
+                  <div className={cn(
+                    "flex items-center justify-center px-4 py-3",
+                    "border-b sm:border-b-0 sm:border-r border-gray-200",
+                    "hover:bg-gray-50",
+                    theme.transition.colors
+                  )}>
                     <DatePickerDepart />
                   </div>
-                  <div className="flex items-center justify-center px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <div className={cn(
+                    "flex items-center justify-center px-4 py-3",
+                    "hover:bg-gray-50",
+                    theme.transition.colors
+                  )}>
                     <DatePickerReturn />
                   </div>
                 </div>
@@ -185,15 +211,19 @@ function SearchBar() {
             </div>
 
             {/* Search Button */}
-            <div className="flex items-center justify-center pt-2">
+            <div className={cn(theme.layout.centered, "pt-2")}>
               <button
                 onClick={handleExploreClick}
                 disabled={!departure || !arrival}
-                className="group relative flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-2xl shadow-lg hover:shadow-xl disabled:shadow-none transition-all duration-200 font-semibold text-lg disabled:cursor-not-allowed hover:scale-105 disabled:hover:scale-100"
+                className={cn(
+                  "group relative flex items-center gap-3 text-lg",
+                  theme.components.button.primary,
+                  theme.components.button.disabled
+                )}
               >
-                <Search className="w-6 h-6 group-hover:rotate-12 transition-transform duration-200" />
+                <Search className={cn("w-6 h-6 group-hover:rotate-12", theme.transition.transform)} />
                 <span>Search Flights</span>
-                <div className="absolute inset-0 bg-white rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
+                <div className={cn("absolute inset-0 bg-white opacity-0 group-hover:opacity-10", theme.radius.lg, theme.transition.fast)}></div>
               </button>
             </div>
           </div>
@@ -202,9 +232,9 @@ function SearchBar() {
 
       {/* Search Results */}
       {searchTriggered && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className={theme.animations.fadeIn}>
           <div className="flex items-center gap-2 mb-6 px-2">
-            <h3 className="font-bold text-2xl md:text-3xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <h3 className={cn(theme.typography.heading.h2, theme.colors.primary.gradient, "bg-clip-text text-transparent")}>
               Available Flights
             </h3>
             <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent"></div>

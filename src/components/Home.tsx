@@ -97,15 +97,15 @@ function Home() {
 
               {/* Stats */}
               <div className="flex flex-wrap justify-center gap-6 md:gap-8 pt-6">
-                <div className="flex items-center gap-2 text-white/90">
+                <div className="flex items-center gap-2 text-black/90 bg-white/50 p-2 rounded">
                   <Globe className="w-5 h-5 text-cyan-400" />
                   <span className="text-sm md:text-base font-semibold">500+ Destinations</span>
                 </div>
-                <div className="flex items-center gap-2 text-white/90">
+                <div className="flex items-center gap-2 text-black/90 bg-white/50 p-2 rounded">
                   <Plane className="w-5 h-5 text-blue-400" />
                   <span className="text-sm md:text-base font-semibold">100+ Airlines</span>
                 </div>
-                <div className="flex items-center gap-2 text-white/90">
+                <div className="flex items-center gap-2 text-black/90 bg-white/50 p-2 rounded">
                   <Award className="w-5 h-5 text-purple-400" />
                   <span className="text-sm md:text-base font-semibold">Trusted by Millions</span>
                 </div>

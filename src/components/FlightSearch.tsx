@@ -8,6 +8,7 @@ import {
 } from "..//components/ui/accordion";
 
 import { Bed, Circle, Earth, MonitorPlay, PlaneLanding, PlaneTakeoff, Plug, Wifi, Search, Sparkles } from "lucide-react";
+import { theme, cn } from "../lib/theme";
 
 interface Flight {
   id: string;
@@ -79,32 +80,41 @@ function FlightSearch({ departure, arrival }: FlightSearchParam){
               <AccordionItem
                 key={flight.id}
                 value={`flight-${flight.id}`}
-                className="bg-white rounded-2xl border-2 border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className={cn(
+                  theme.components.card.base,
+                  theme.components.card.hover,
+                  theme.transition.normal,
+                  "overflow-hidden"
+                )}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <AccordionTrigger className="flex justify-between items-center px-4 sm:px-6 py-5 text-left hover:no-underline hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent transition-all duration-200">
+                <AccordionTrigger className={cn(
+                  "flex justify-between items-center px-4 sm:px-6 py-5 text-left hover:no-underline",
+                  "hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent",
+                  theme.transition.fast
+                )}>
                   {/* Flight Summary */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 w-full items-center">
                     <div className="flex flex-col">
-                      <span className="font-bold text-gray-900 text-sm sm:text-base">{flight.airline}</span>
-                      <span className="text-xs text-gray-500">{flight.flightNumber}</span>
+                      <span className={cn(theme.typography.body.regular, "font-bold text-gray-900")}>{flight.airline}</span>
+                      <span className={cn(theme.typography.body.small, "text-gray-500")}>{flight.flightNumber}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                      <span className="text-sm sm:text-base text-gray-700 font-medium">
+                      <span className={cn(theme.typography.body.regular, "text-gray-700 font-medium")}>
                         {hours}h {minutes}m
                       </span>
                     </div>
                     <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
+                      <span className={theme.components.badge.blue}>
                         {flight.class}
                       </span>
                     </div>
                     <div className="flex flex-col items-end col-span-2 sm:col-span-1">
-                      <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                      <span className={cn("text-xl sm:text-2xl font-bold", theme.colors.primary.gradient, "bg-clip-text text-transparent")}>
                         ${flight.price}
                       </span>
-                      <span className="text-xs text-gray-500">{flight.availableSeats} seats left</span>
+                      <span className={cn(theme.typography.body.small, "text-gray-500")}>{flight.availableSeats} seats left</span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -112,9 +122,9 @@ function FlightSearch({ departure, arrival }: FlightSearchParam){
                   <div className="px-4 sm:px-6 pb-6 pt-2">
                     <div className="flex flex-col md:flex-row gap-8">
                       {/* Flight Times */}
-                      <div className="flex-1 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 space-y-4">
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                          <Circle className="w-4 h-4 text-blue-600" />
+                      <div className={cn("flex-1 bg-gradient-to-br", theme.colors.primary.light, theme.radius.md, "p-5 space-y-4")}>
+                        <h4 className={cn(theme.typography.heading.h4, "text-gray-900 mb-3 flex items-center gap-2")}>
+                          <Circle className={cn("w-4 h-4", theme.colors.primary.text)} />
                           Flight Details
                         </h4>
 
@@ -164,9 +174,9 @@ function FlightSearch({ departure, arrival }: FlightSearchParam){
                       </div>
 
                       {/* Amenities */}
-                      <div className="flex-1 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5">
-                        <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                          <Sparkles className="w-4 h-4 text-purple-600" />
+                      <div className={cn("flex-1 bg-gradient-to-br", theme.colors.secondary.light, theme.radius.md, "p-5")}>
+                        <h4 className={cn(theme.typography.heading.h4, "text-gray-900 mb-4 flex items-center gap-2")}>
+                          <Sparkles className={cn("w-4 h-4", theme.colors.secondary.text)} />
                           Amenities & Info
                         </h4>
                         <div className="space-y-3">
@@ -209,7 +219,15 @@ function FlightSearch({ departure, arrival }: FlightSearchParam){
                           </div>
                         </div>
 
-                        <button className="w-full mt-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
+                        <button className={cn(
+                          "w-full mt-5 py-3 text-white font-semibold",
+                          theme.colors.primary.gradient,
+                          "hover:from-blue-700 hover:to-indigo-700",
+                          theme.radius.md,
+                          theme.shadow.md,
+                          "hover:shadow-lg hover:scale-[1.02]",
+                          theme.transition.fast
+                        )}>
                           Select Flight
                         </button>
                       </div>
@@ -221,13 +239,16 @@ function FlightSearch({ departure, arrival }: FlightSearchParam){
           })}
         </Accordion>
       ) : (
-        <div className="bg-white rounded-2xl border-2 border-dashed border-gray-300 p-12 text-center">
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+        <div className={cn(
+          "bg-white border-2 border-dashed border-gray-300 p-12 text-center",
+          theme.radius.lg
+        )}>
+          <div className={cn(theme.layout.centered, "gap-4")}>
+            <div className={cn("w-16 h-16 bg-gray-100 flex items-center justify-center", theme.radius.full)}>
               <Search className="w-8 h-8 text-gray-400" />
             </div>
-            <p className="text-lg text-gray-600 font-medium">No flights found for the selected route.</p>
-            <p className="text-sm text-gray-500">Try adjusting your search criteria</p>
+            <p className={cn(theme.typography.body.large, "text-gray-600 font-medium")}>No flights found for the selected route.</p>
+            <p className={cn(theme.typography.body.small, "text-gray-500")}>Try adjusting your search criteria</p>
           </div>
         </div>
       )}
