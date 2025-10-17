@@ -22,7 +22,7 @@ export function DatePickerDepart() {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[190px] justify-start text-left font-normal bg-transparent focus:outline-none focus:border-none focus-visible:ring-0 border-none flex gap-[10px]",
+            "w-[190px] justify-start text-left font-normal bg-transparent focus:outline-hidden focus:border-none focus-visible:ring-0 border-none flex gap-[10px]",
             !date && "text-muted-foreground"
           )}
         >
@@ -51,7 +51,7 @@ export function DatePickerReturn() {
           <Button
             variant={"outline"}
             className={cn(
-              "w-[190px] justify-start text-left font-normal bg-transparent focus:outline-none focus:border-none focus-visible:ring-0 border-none flex gap-[10px]",
+              "w-[190px] justify-start text-left font-normal bg-transparent focus:outline-hidden focus:border-none focus-visible:ring-0 border-none flex gap-[10px]",
               !date && "text-muted-foreground"
             )}
           >
